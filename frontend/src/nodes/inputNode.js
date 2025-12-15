@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Handle, Position } from "reactflow";
-
+import { FileInput } from "lucide-react";
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
     data?.inputName || id.replace("customInput-", "input_")
@@ -11,10 +11,10 @@ export const InputNode = ({ id, data }) => {
     <div
       style={{
         width: 210,
-        background: "#0f172a",
+        background: "#30384bff",
         borderRadius: 10,
         boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
-        border: "1px solid #1e293b",
+        border: "1px solid #b2c0d6ff",
         color: "#e5e7eb",
         fontFamily: "Inter, sans-serif",
       }}
@@ -29,10 +29,7 @@ export const InputNode = ({ id, data }) => {
           fontSize: 14,
         }}
       >
-        Input
-        <div style={{ fontSize: 11, fontWeight: 400, opacity: 0.9 }}>
-          Define an input variable
-        </div>
+        <FileInput/>
       </div>
 
       <div style={{ padding: 12 }}>

@@ -1,15 +1,15 @@
 // llmNode.js
 
 import { Handle, Position } from 'reactflow';
-
+import { Bot } from 'lucide-react';
 export const LLMNode = ({ id, data }) => {
 
   return (
     <div  style={{
         width: 240,
-        background: "#0f172a",
+        background: "#30384bff",
         borderRadius: 10,
-        border: "1px solid #1e293b",
+        border: "1px solid #b2c0d6ff",
         boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
         color: "#e5e7eb",
         fontFamily: "Inter, sans-serif",
@@ -46,10 +46,7 @@ export const LLMNode = ({ id, data }) => {
           fontWeight: 600,
           fontSize: 14,
         }}>
-        <span>LLM</span>
-      <div style={{ fontSize: 11, fontWeight: 400, opacity: 0.9 }}>
-        <span>Large Language Model</span>
-      </div>
+       <Bot/>
       </div>
 
       <div style={{ padding: 12 }}>
@@ -80,10 +77,10 @@ export const LLMNode = ({ id, data }) => {
         position={Position.Right}
         id={`${id}-response`}
         style={{
-          background: "#22c55e",
+          background: "#60a5fa",
           width: 10,
           height: 10,
-          border: "2px solid #064e3b",
+          border: "2px solid #1e3a8a",
         }}
       />
     </div>

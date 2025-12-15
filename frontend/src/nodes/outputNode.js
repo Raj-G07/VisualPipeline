@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Handle, Position } from 'reactflow';
-
+import { FileOutput } from 'lucide-react';
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
   const [outputType, setOutputType] = useState(data.outputType || 'Text');
@@ -19,9 +19,9 @@ export const OutputNode = ({ id, data }) => {
     <div 
     style={{
         width: 240,
-        background: "#0f172a",
+        background: "#30384bff",
         borderRadius: 10,
-        border: "1px solid #1e293b",
+        border: "1px solid #b2c0d6ff",
         boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
         color: "#e5e7eb",
         fontFamily: "Inter, sans-serif",
@@ -47,10 +47,7 @@ export const OutputNode = ({ id, data }) => {
           fontWeight: 600,
           fontSize: 14,
         }}>
-        <span style={{ fontSize: 11, fontWeight: 400, opacity: 0.9 }} >Output</span>
-        <div style={{ fontSize: 11, fontWeight: 400, opacity: 0.9 }}>
-          Define an input variable
-        </div>
+       <FileOutput/>
       </div>
 
       

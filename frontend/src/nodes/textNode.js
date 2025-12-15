@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Handle, Position } from 'reactflow';
-
+import { FileTypeCorner} from "lucide-react"
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
 
@@ -13,9 +13,9 @@ export const TextNode = ({ id, data }) => {
   return (
     <div  style={{
         width: 260,
-        background: "#0f172a",
+        background: "#30384bff",
         borderRadius: 10,
-        border: "1px solid #1e293b",
+        border: "1px solid #b2c0d6ff",
         boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
         color: "#e5e7eb",
         fontFamily: "Inter, sans-serif",
@@ -30,16 +30,7 @@ export const TextNode = ({ id, data }) => {
           color: "#e5e7eb",
         }}
         >
-        <span>Text</span>
-        <div
-          style={{
-            fontSize: 11,
-            fontWeight: 400,
-            opacity: 0.9,
-          }}
-        >
-          Use {"{variable}"} syntax for dynamic inputs
-        </div>
+       <FileTypeCorner/>
       </div>
 
       <div style={{ padding: 12 }}>
