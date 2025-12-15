@@ -1,11 +1,15 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI
+from schemas.pipeline import PipelineRequest, PipelineResponse
+from services.pipeline_service import analyze_pipeline
 
 app = FastAPI()
 
-@app.get('/')
-def ping():
-    return {'Ping': 'Pong'}
 
-@app.get('/pipelines/parse')
-def parse_pipeline(pipeline: str = Form(...)):
-    return {'status': 'parsed'}
+@app.post("/pipelines/parse", response_model=PipelineResponse)
+def parse_pipeline(pipeline: PipelineRequest):
+    return analyze_pipeline(pipeline.nodes, pipeline.edges)
+
+
+@app.get("/")
+def ping():
+    return {"ping": "pong"}
