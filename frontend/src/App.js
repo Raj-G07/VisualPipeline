@@ -1,7 +1,7 @@
 import { PipelineToolbar } from "./toolbar";
 import { PipelineUI } from "./ui";
 import { SubmitButton } from "./submit";
-
+import { Network } from "lucide-react";
 function App() {
   return (
     <div
@@ -14,7 +14,6 @@ function App() {
         flexDirection: "column",
       }}
     >
-      {/* Header */}
       <header
         style={{
           height: 80,
@@ -26,20 +25,44 @@ function App() {
           background: "#020617",
         }}
       >
-        <div>
-          <div style={{ fontSize: 18, fontWeight: 600 }}>
-            VectorShift Pipeline Builder
+        <div style={{
+          display: "flex",
+          gap: 1
+        }}>
+      <div
+        style={{
+          width: "4rem", // w-16
+          height: "4rem", // h-16
+          borderRadius: "1rem", // rounded-2xl
+          background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "0 auto",
+        }}
+      >
+        <Network
+          style={{
+            width: "2rem", // w-8
+            height: "2rem", // h-8
+            color: "rgb(59,130,246)", // text-primary
+          }}
+        />
+      </div>
+      <div style={{ marginLeft: 10, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div style={{ fontSize: 25,
+            fontWeight: 600 }}>
+            VectorShift Studio
           </div>
-          <div style={{ fontSize: 12, opacity: 0.7 }}>
-            Create and connect nodes to build your workflow
+          <div style={{ fontSize: 13, opacity: 0.7 }}>
+            Visual Pipeline Builder
           </div>
+      </div>
         </div>
 
-        {/* Submit Button (Top Right) */}
         <SubmitButton />
       </header>
 
-      {/* Main Content */}
       <div
         style={{
           flex: 1,
@@ -47,7 +70,6 @@ function App() {
           overflow: "hidden",
         }}
       >
-        {/* Sidebar */}
         <aside
           style={{
             width: 260,
@@ -58,7 +80,6 @@ function App() {
           <PipelineToolbar />
         </aside>
 
-        {/* Canvas */}
         <div
           style={{
             flex: 1,

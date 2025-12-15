@@ -1,6 +1,6 @@
 // draggableNode.js
 
-export const DraggableNode = ({ type, label,description, color }) => {
+export const DraggableNode = ({ type, label,description,Icon, color }) => {
     const onDragStart = (event, nodeType) => {
       const appData = { nodeType }
       event.target.style.cursor = 'grabbing';
@@ -26,11 +26,15 @@ export const DraggableNode = ({ type, label,description, color }) => {
         transition: "background 0.15s ease, border 0.15s ease",
       }}
         draggable
-        onMouseEnter={(e) =>
-        (e.currentTarget.style.background = "#020617")
+        onMouseEnter={(e) =>{
+          e.currentTarget.style.background = "#020617"
+          e.currentTarget.style.border = "1px solid #2563eb"  
+        }
       }
-       onMouseLeave={(e) =>
-        (e.currentTarget.style.background = "#0f172a")
+       onMouseLeave={(e) => {
+         e.currentTarget.style.background = "#0f172a"
+         e.currentTarget.style.border = "1px solid #1e293b"
+        }
       }
       >
        <div
@@ -48,7 +52,7 @@ export const DraggableNode = ({ type, label,description, color }) => {
           flexShrink: 0,
         }}
       >
-        {label[0]}
+        <Icon/>
       </div>
 
       {/* Text */}

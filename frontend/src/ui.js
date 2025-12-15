@@ -10,6 +10,7 @@ import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
+import { Network } from 'lucide-react';
 
 import 'reactflow/dist/style.css';
 
@@ -117,15 +118,19 @@ export const PipelineUI = () => {
          >
           <Background variant="dots" color="#d2dae7ff" size={1} gap={gridSize} />
            <Controls 
+           showZoom={true}
+           showFitView={true}
+           showInteractive={false}
            style={{
-            background: "#0f172a",
+            background: "#020617",
             border: "1px solid #1e293b",
-            borderRadius: 8,
+            borderRadius: 12,
+            overflow: "hidden"
            }}
            />
            <MiniMap  
            nodeColor={() => "#334155"}
-           maskColor="rgba(2,6,23,0.6)"
+           maskColor="rgba(83, 90, 124, 0.6)"
           style={{
             backgroundColor: "#0f172a",
             border: "1px solid #1e293b",
@@ -133,6 +138,73 @@ export const PipelineUI = () => {
           }}
           />
             </ReactFlow>
+          {nodes.length === 0 && (
+       <div
+       style={{
+      position: "absolute",
+      inset: 0,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      pointerEvents: "none",
+    }}
+  >
+    <div
+      style={{
+        textAlign: "center",
+        maxWidth: "28rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.75rem", 
+      }}
+    >
+      <div
+        style={{
+          width: "4rem", 
+          height: "4rem", 
+          borderRadius: "1rem", 
+          background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "0 auto",
+        }}
+      >
+        <Network
+          style={{
+            width: "2rem", 
+            height: "2rem", 
+            color: "rgb(59,130,246)", 
+          }}
+        />
+      </div>
+
+      <h3
+        style={{
+          fontSize: "1.125rem",
+          fontWeight: 600,
+          background: "linear-gradient(to right, #e5e7eb, #9ca3af)",
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          color: "transparent",
+        }}
+      >
+        Start Building Your Pipeline
+      </h3>
+
+      <p
+        style={{
+          fontSize: "0.875rem", 
+          color: "#9ca3af", 
+          lineHeight: 1.6, 
+        }}
+      >
+        Select nodes from the sidebar to begin creating your workflow.
+        Connect them together to build complex data pipelines.
+      </p>
+    </div>
+     </div>
+    )}
         </div>
         </>
     )
