@@ -23,8 +23,26 @@ try {
 }
 
     return (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <button type="submit" onClick={submitFakePipeline}>Submit Pipeline</button>
+        <div
+         style={{
+          display: "flex",
+          justifyContent: "center",
+          borderTop: "1px solid #1e293b",
+          background: "#020617",
+         }}>
+      <button type="submit" onClick={submitFakePipeline}  style={{
+          padding: "10px 18px",
+          background: "#2563eb",
+          color: "#fff",
+          border: "none",
+          borderRadius: 8,
+          fontSize: 13,
+          fontWeight: 600,
+          cursor: "pointer",
+        }}
+        >
+          Submit Pipeline
+        </button>
         </div>
     );
 }
