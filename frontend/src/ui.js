@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 import { useState, useRef, useCallback } from 'react';
-import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
+import ReactFlow, { Controls, Background, MiniMap} from 'reactflow';
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
 import { InputNode } from './nodes/inputNode';
@@ -90,8 +90,14 @@ export const PipelineUI = () => {
 
     return (
         <>
-        <div ref={reactFlowWrapper} style={{width: '100wv', height: '70vh'}}>
-            <ReactFlow
+        <div ref={reactFlowWrapper} style={{
+        width: "100%",
+        height: "100%",
+        background: "#020617",
+        borderTop: "1px solid #1e293b",
+        position: "relative",
+      }}>
+        <ReactFlow
                 nodes={nodes}
                 edges={edges}
                 onNodesChange={onNodesChange}
@@ -104,10 +110,28 @@ export const PipelineUI = () => {
                 proOptions={proOptions}
                 snapGrid={[gridSize, gridSize]}
                 connectionLineType='smoothstep'
-            >
-                <Background color="#aaa" gap={gridSize} />
-                <Controls />
-                <MiniMap />
+                minZoom={0.4}
+                maxZoom={1.5}
+                fitView
+                style={{ background: "#020617" }}
+         >
+          <Background variant="dots" color="#d2dae7ff" size={1} gap={gridSize} />
+           <Controls 
+           style={{
+            background: "#0f172a",
+            border: "1px solid #1e293b",
+            borderRadius: 8,
+           }}
+           />
+           <MiniMap  
+           nodeColor={() => "#334155"}
+           maskColor="rgba(2,6,23,0.6)"
+          style={{
+            backgroundColor: "#0f172a",
+            border: "1px solid #1e293b",
+            borderRadius: 8,
+          }}
+          />
             </ReactFlow>
         </div>
         </>
