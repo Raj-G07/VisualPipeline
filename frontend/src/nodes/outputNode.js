@@ -16,31 +16,87 @@ export const OutputNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
+    <div 
+    style={{
+        width: 240,
+        background: "#0f172a",
+        borderRadius: 10,
+        border: "1px solid #1e293b",
+        boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
+        color: "#e5e7eb",
+        fontFamily: "Inter, sans-serif",
+      }}
+      >
       <Handle
         type="target"
         position={Position.Left}
         id={`${id}-value`}
+        style={{
+          background: "#7c3aed",
+          width: 10,
+          height: 10,
+          border: "2px solid #433855ff",
+        }}
       />
-      <div>
-        <span>Output</span>
+      <div 
+      style={{
+          background: "#7c3aed",
+          padding: "10px 12px",
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          fontWeight: 600,
+          fontSize: 14,
+        }}>
+        <span style={{ fontSize: 11, fontWeight: 400, opacity: 0.9 }} >Output</span>
+        <div style={{ fontSize: 11, fontWeight: 400, opacity: 0.9 }}>
+          Define an input variable
+        </div>
       </div>
-      <div>
-        <label>
-          Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
+
+      
+      {/* Body */}
+      <div style={{ padding: 12 }}>
+        {/* Name */}
+        <div style={{ marginBottom: 10 }}>
+          <label style={{ fontSize: 11, opacity: 0.8 }}>Name</label>
+          <input
+            type="text"
+            value={currName}
+            onChange={(e) => setCurrName(e.target.value)}
+            style={{
+              width: "90%",
+              marginTop: 4,
+              padding: "6px 8px",
+              borderRadius: 6,
+              background: "#020617",
+              border: "1px solid #1e293b",
+              color: "#e5e7eb",
+              fontSize: 12,
+            }}
           />
-        </label>
-        <label>
-          Type:
-          <select value={outputType} onChange={handleTypeChange}>
+        </div>
+
+        {/* Type */}
+        <div>
+          <label style={{ fontSize: 11, opacity: 0.8 }}>Type</label>
+          <select
+            value={outputType}
+            onChange={(e) => setOutputType(e.target.value)}
+            style={{
+              width: "100%",
+              marginTop: 4,
+              padding: "6px 8px",
+              borderRadius: 6,
+              background: "#020617",
+              border: "1px solid #1e293b",
+              color: "#e5e7eb",
+              fontSize: 12,
+            }}
+          >
             <option value="Text">Text</option>
             <option value="File">Image</option>
           </select>
-        </label>
+        </div>
       </div>
     </div>
   );
