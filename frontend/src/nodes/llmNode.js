@@ -9,7 +9,7 @@ export const LLMNode = ({ id, data }) => {
         width: 240,
         background: "#30384bff",
         borderRadius: 10,
-        border: "1px solid #b2c0d6ff",
+        border: "1px solid #305facff",
         boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
         color: "#e5e7eb",
         fontFamily: "Inter, sans-serif",
@@ -61,7 +61,7 @@ export const LLMNode = ({ id, data }) => {
               padding: "6px 8px",
               borderRadius: 6,
               background: "#020617",
-              border: "1px solid #1e293b",
+              border: "1px solid rgba(148, 163, 184, 0.5)",
               color: "#e5e7eb",
               fontSize: 12,
             }}

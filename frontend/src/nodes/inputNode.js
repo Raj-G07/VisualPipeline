@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Handle, Position } from "reactflow";
 import { FileInput } from "lucide-react";
+
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
     data?.inputName || id.replace("customInput-", "input_")
   );
   const [inputType, setInputType] = useState(data?.inputType || "Number");
-
   return (
     <div
       style={{
-        width: 210,
+        width: 240,
         background: "#30384bff",
         borderRadius: 10,
         boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
-        border: "1px solid #b2c0d6ff",
+        border: "1px solid #19a38cff",
         color: "#e5e7eb",
         fontFamily: "Inter, sans-serif",
       }}
@@ -43,8 +43,8 @@ export const InputNode = ({ id, data }) => {
               marginTop: 3,
               padding: "6px 8px",
               borderRadius: 6,
-              background: "#020617",
-              border: "1px solid #1e293b",
+              background: "#030614ff",
+              border: "1px solid rgba(148, 163, 184, 0.5)",
               color: "#e5e7eb",
               fontSize: 12,
             }}
@@ -62,9 +62,10 @@ export const InputNode = ({ id, data }) => {
               padding: "6px 8px",
               borderRadius: 6,
               background: "#020617",
-              border: "1px solid #1e293b",
+              border: "1px solid rgba(148, 163, 184, 0.5)",
               color: "#e5e7eb",
               fontSize: 12,
+              transition: "border-color 150ms ease"
             }}
           >
             <option value="Text">Text</option>
