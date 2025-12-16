@@ -1,7 +1,7 @@
 // toolbar.js
 
 import { PipelineOverview } from "./components/pipelineOverview";
-import { DraggableNode } from "./draggableNode";
+import { DraggableNode } from "./components/draggableNode";
 import { Library,Activity } from 'lucide-react';
 import { FileTypeCorner, Bot ,FileOutput, FileInput } from "lucide-react";
 export const PipelineToolbar = () => {
