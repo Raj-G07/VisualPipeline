@@ -34,14 +34,12 @@ try {
          style={{
           display: "flex",
           justifyContent: "center",
-          borderTop: "1px solid #1e293b",
-          background: "#020617",
          }}>
         <button type="submit" 
         disabled={isDisabled}
         onClick={submitFakePipeline}
           style={{
-        padding: "10px 18px",
+          padding: "10px 18px",
           background: isDisabled ? "#345685ff" : "#2563eb",
           color: "#fff",
           border: "none",
@@ -56,7 +54,7 @@ try {
         }}
         >
         <Play style={{ width: "1rem", height: "1rem", margin: "0 8px 0 0" }} />
-         Run Pipeline
+         Run 
         </button>
         </div>
     );

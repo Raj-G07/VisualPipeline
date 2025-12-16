@@ -18,7 +18,7 @@ export const DraggableNode = ({ type, label,description,Icon, color }) => {
         cursor: "grab",
         padding: "10px 12px",
         borderRadius: 10,
-        background: "#0f172a",
+         background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(25, 7, 70, 0.1))",
         border: "1px solid #1e293b",
         display: "flex",
         alignItems: "flex-start",
