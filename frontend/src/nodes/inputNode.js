@@ -50,9 +50,9 @@ export const InputNode = ({ id, data }) => {
               transition: "border-color 150ms ease"
             }}
         >
-          <option>Text</option>
-          <option>Number</option>
-          <option>File</option>
+          <option value="Text">Text</option>
+          <option value="Number">Number</option>
+          <option value="File">File</option>
         </select>
       </div>
 
