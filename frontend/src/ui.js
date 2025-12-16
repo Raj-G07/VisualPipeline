@@ -34,6 +34,14 @@ const selector = (state) => ({
 });
 
 export const PipelineUI = () => {
+    const edgeOption = {
+      animated: true,
+      style: {
+        strokeWidth: 2,
+        strokeDasharray: '6 6',
+        stroke: "url(#edge-gradient)",
+      },
+    }
     const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const {
@@ -113,10 +121,19 @@ export const PipelineUI = () => {
                 connectionLineType='smoothstep'
                 minZoom={0.4}
                 maxZoom={1.5}
+                defaultEdgeOptions={edgeOption}
                 fitView
                 style={{ background: "#020617" }}
          >
-          <Background variant="dots" color="#d2dae7ff" size={1} gap={gridSize} />
+           <svg style={{ position: "absolute", width: 0, height: 0 }}>
+              <defs>
+                <linearGradient id="edge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="oklch(0.46 0.07 98)" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="oklch(0.82 0.03 96)" stopOpacity="0.8" />
+                </linearGradient>
+              </defs>
+            </svg>
+          <Background variant="dots" color="#4a525fff" size={1} gap={gridSize} />
            <Controls 
            showZoom={true}
            showFitView={true}
