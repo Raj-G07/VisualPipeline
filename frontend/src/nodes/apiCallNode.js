@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Handle, Position } from "reactflow";
 import { Globe } from 'lucide-react';
 import { BaseNode } from "./baseNode";
-
 export const ApiCallNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
     data?.inputName || id.replace("apiCall-", "apiCall_")
@@ -19,6 +18,7 @@ export const ApiCallNode = ({ id, data }) => {
       <div style={{ marginBottom: 10 }}>
         <label style={{ fontSize: 11, opacity: 0.8 }}>URL</label>
         <input
+          type="text"
           value={currName}
           onChange={(e) => setCurrName(e.target.value)}
           style={{
@@ -33,7 +33,7 @@ export const ApiCallNode = ({ id, data }) => {
             }}
         />
       </div>
-
+    
       <div>
         <label style={{ fontSize: 11, opacity: 0.8 }}>Method</label>
         <select

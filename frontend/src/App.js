@@ -2,7 +2,10 @@ import { PipelineToolbar } from "./toolbar";
 import { PipelineUI } from "./ui";
 import { SubmitButton } from "./submit";
 import { Network } from "lucide-react";
+import { useState } from "react";
+import { PipelineResultOverlay } from "./components/pipelineResultCard";
 function App() {
+  const [result, setResult] = useState(null);
   return (
     <div
       style={{
@@ -31,9 +34,9 @@ function App() {
         }}>
       <div
         style={{
-          width: "4rem", // w-16
-          height: "4rem", // h-16
-          borderRadius: "1rem", // rounded-2xl
+          width: "4rem", 
+          height: "4rem", 
+          borderRadius: "1rem", 
           background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
           display: "flex",
           alignItems: "center",
@@ -43,9 +46,9 @@ function App() {
       >
         <Network
           style={{
-            width: "2rem", // w-8
-            height: "2rem", // h-8
-            color: "rgb(59,130,246)", // text-primary
+            width: "2rem",
+            height: "2rem", 
+            color: "rgb(59,130,246)",
           }}
         />
       </div>
@@ -59,8 +62,7 @@ function App() {
           </div>
       </div>
         </div>
-
-        <SubmitButton />
+        <SubmitButton result={result} setResult={setResult} />
       </header>
 
       <div
@@ -89,6 +91,7 @@ function App() {
           <PipelineUI />
         </div>
       </div>
+      <PipelineResultOverlay result={result} onClose={()=> setResult(null)}/>
     </div>
   );
 }

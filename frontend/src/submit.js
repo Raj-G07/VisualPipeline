@@ -1,61 +1,110 @@
-// submit.js
-import { fakeNodes, fakeEdges } from "./mocks/pipelineDagIsFalse";
-import {Play} from "lucide-react"
+import { useState } from "react";
 import { useStore } from "./store";
-import { shallow } from "zustand/shallow";
-const selector = (state) => ({
-  nodes: state.nodes,
-});
+import {Play} from "lucide-react";
 
-export const SubmitButton = () => {
-const {nodes} = useStore(selector, shallow);
-const isDisabled = nodes.length === 0;
-async function submitFakePipeline() {
-try {
-    const response = await fetch("http://127.0.0.1:8000/pipelines/parse", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nodes: fakeNodes,
-        edges: fakeEdges
-      })
-    });
+export const SubmitButton = ({result,setResult}) => {
+  const { nodes, edges } = useStore((s) => ({
+    nodes: s.nodes,
+    edges: s.edges,
+  }));
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const isDisabled =
+    loading ||
+    nodes.length === 0 ||
+    (nodes.length > 1 && edges.length === 0);
+
+  const submitPipeline = async () => {
+    if (isDisabled) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("http://127.0.0.1:8000/pipelines/parse", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nodes, edges }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Pipeline validation failed");
+      }
+
+      const data = await res.json();
+      setResult(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   
-    const data = await response.json();
-    alert(JSON.stringify(data, null, 2));
-} catch (error) {
-    alert("Failed to submit pipeline. Check backend server.");
-    console.error(error);
-}
-}
-
-    return (
-        <div
-         style={{
-          display: "flex",
-          justifyContent: "center",
-         }}>
-        <button type="submit" 
+  return (
+    <>
+    <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      padding: "12px",
+    }}
+    >
+      <button
+        onClick={submitPipeline}
         disabled={isDisabled}
-        onClick={submitFakePipeline}
-          style={{
+        style={{
           padding: "10px 18px",
-          background: isDisabled ? "#345685ff" : "#2563eb",
-          color: "#fff",
-          border: "none",
-          borderRadius: 8,
+          borderRadius: 10,
           fontSize: 13,
           fontWeight: 600,
-          cursor: isDisabled ? "not-allowed" : "pointer",
+          letterSpacing: 0.3,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          transition: "background 0.2s ease"
-        }}
+          background: isDisabled
+          ? "#1e293b"
+            : "linear-gradient(135deg, #2563eb, #4f46e5)",
+            
+          color: isDisabled ? "#64748b" : "#ffffff",
+
+          border: isDisabled
+          ? "1px solid #334155"
+            : "1px solid rgba(99,102,241,0.6)",
+            
+            boxShadow: isDisabled
+            ? "none"
+            : "0 10px 24px rgba(37,99,235,0.35)",
+            
+            cursor: isDisabled ? "not-allowed" : "pointer",
+            
+            transition:
+            "background 150ms ease, box-shadow 150ms ease, transform 100ms ease",
+          }}
+          onMouseDown={(e) => {
+            if (!isDisabled) e.currentTarget.style.transform = "scale(0.97)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
         >
-        <Play style={{ width: "1rem", height: "1rem", margin: "0 8px 0 0" }} />
-         Run 
-        </button>
+      <Play style={{ width: "1rem", height: "1rem", margin: "0 8px 0 0" }} />
+        {loading ? "" : "Run"}
+      </button>
+
+      {error && (
+        <div
+        style={{
+          marginLeft: 12,
+            fontSize: 12,
+            color: "#ef4444",
+            alignSelf: "center",
+          }}
+        >
+          {error}
         </div>
-    );
-}
+      )}
+    </div>
+  </>
+  );
+};
