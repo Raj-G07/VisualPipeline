@@ -4,7 +4,10 @@ import { PipelineOverview } from "./components/pipelineOverview";
 import { DraggableNode } from "./components/draggableNode";
 import { Library,Activity } from 'lucide-react';
 import { FileTypeCorner, Bot ,FileOutput, FileInput,GitMerge,Cog,Funnel,Globe } from "lucide-react";
+import { nodeTypes } from "./ui";
 export const PipelineToolbar = () => {
+  
+  const length = nodeTypes ? Object.keys(nodeTypes).length : 0;
   return (
     <div
       style={{
@@ -60,7 +63,17 @@ export const PipelineToolbar = () => {
         }}
       >
         <Library style={{ width: "1rem", height: "1rem", margin: "0 8px 0 0" ,color: "#3b82f6"}}/>
-        Node Library
+        <div style={{ display: "flex" , alignItems: "center", gap: 21}}>
+        Node Library 
+        <div style={{
+          border: "1px solid rgba(148,163,184,0.5)",
+          borderRadius: 6,
+          padding: "2px 6px",
+          fontSize: 11,
+          marginLeft: 6,
+          background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(25, 7, 70, 0.1))",
+        }}>{length} types</div>
+        </div>
       </div>
 
       <div
