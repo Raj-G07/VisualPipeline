@@ -22,7 +22,7 @@ function App() {
           alignItems: "center",
           justifyContent: "space-between",
           borderBottom: "1px solid #1e293b",
-          background: "#020617",
+        
         }}
       >
         <div style={{
@@ -74,7 +74,7 @@ function App() {
           style={{
             width: 260,
             borderRight: "1px solid #1e293b",
-            background: "#020617",
+         
           }}
         >
           <PipelineToolbar />
@@ -83,7 +83,7 @@ function App() {
         <div
           style={{
             flex: 1,
-            background: "#020617",
+          
           }}
         >
           <PipelineUI />
