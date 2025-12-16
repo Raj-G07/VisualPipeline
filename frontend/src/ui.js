@@ -11,7 +11,10 @@ import { LLMNode } from "./nodes/llmNode";
 import { OutputNode } from "./nodes/outputNode";
 import { TextNode } from "./nodes/textNode";
 import { Network } from "lucide-react";
-
+import { MergeNode } from "./nodes/mergeNode";
+import { TransformNode } from "./nodes/transformNode";
+import { FilterNode } from "./nodes/filterNode";
+import { ApiCallNode } from "./nodes/apiCallNode";
 import "reactflow/dist/style.css";
 
 const gridSize = 20;
@@ -21,6 +24,10 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  merge: MergeNode,
+  transform: TransformNode,
+  filter: FilterNode,
+  apiCall: ApiCallNode,
 };
 
 const selector = (state) => ({
