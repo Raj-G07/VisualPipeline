@@ -6,6 +6,7 @@ import { useState } from "react";
 import { PipelineResultOverlay } from "./components/pipelineResultCard";
 function App() {
   const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
   return (
     <div
       style={{
@@ -25,44 +26,52 @@ function App() {
           alignItems: "center",
           justifyContent: "space-between",
           borderBottom: "1px solid #1e293b",
-        
         }}
       >
-        <div style={{
-          display: "flex",
-          gap: 1
-        }}>
-      <div
-        style={{
-          width: "4rem", 
-          height: "4rem", 
-          borderRadius: "1rem", 
-          background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto",
-        }}
-      >
-        <Network
+        <div
           style={{
-            width: "2rem",
-            height: "2rem", 
-            color: "rgb(59,130,246)",
+            display: "flex",
+            gap: 1,
           }}
-        />
-      </div>
-      <div style={{ marginLeft: 10, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <div style={{ fontSize: 25,
-            fontWeight: 600 }}>
-            VectorShift Studio
+        >
+          <div
+            style={{
+              width: "4rem",
+              height: "4rem",
+              borderRadius: "1rem",
+              background:
+                "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "0 auto",
+            }}
+          >
+            <Network
+              style={{
+                width: "2rem",
+                height: "2rem",
+                color: "rgb(59,130,246)",
+              }}
+            />
           </div>
-          <div style={{ fontSize: 13, opacity: 0.7 }}>
-            Visual Pipeline Builder
+          <div
+            style={{
+              marginLeft: 10,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <div style={{ fontSize: 25, fontWeight: 600 }}>
+              VectorShift Studio
+            </div>
+            <div style={{ fontSize: 13, opacity: 0.7 }}>
+              Visual Pipeline Builder
+            </div>
           </div>
-      </div>
         </div>
-        <SubmitButton result={result} setResult={setResult} />
+        <SubmitButton setResult={setResult} setError={setError} />
       </header>
 
       <div
@@ -76,7 +85,6 @@ function App() {
           style={{
             width: 260,
             borderRight: "1px solid #1e293b",
-         
           }}
         >
           <PipelineToolbar />
@@ -85,13 +93,19 @@ function App() {
         <div
           style={{
             flex: 1,
-          
           }}
         >
           <PipelineUI />
         </div>
       </div>
-      <PipelineResultOverlay result={result} onClose={()=> setResult(null)}/>
+      <PipelineResultOverlay
+        result={result}
+        error={error}
+        onClose={() => {
+          setResult(null);
+          setError(null);
+        }}
+      />
     </div>
   );
 }

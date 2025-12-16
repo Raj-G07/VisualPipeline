@@ -2,14 +2,13 @@ import { useState } from "react";
 import { useStore } from "./store";
 import {Play} from "lucide-react";
 
-export const SubmitButton = ({result,setResult}) => {
+export const SubmitButton = ({setResult, setError , error}) => {
   const { nodes, edges } = useStore((s) => ({
     nodes: s.nodes,
     edges: s.edges,
   }));
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const isDisabled =
     loading ||
@@ -35,8 +34,8 @@ export const SubmitButton = ({result,setResult}) => {
 
       const data = await res.json();
       setResult(data);
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.message);
     } finally {
       setLoading(false);
     }

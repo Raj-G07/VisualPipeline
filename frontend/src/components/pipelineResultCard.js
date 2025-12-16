@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { CircleX,Network } from 'lucide-react';
+import { CircleX, Network,TriangleAlert,CircleCheckBig,X } from "lucide-react";
 
-export const PipelineResultOverlay = ({ result, onClose }) => {
+export const PipelineResultOverlay = ({ result, onClose, error }) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (result) {
+    if (result || error) {
       requestAnimationFrame(() => setVisible(true));
     }
-  }, [result]);
+  }, [result, error]);
 
-  if (!result) return null;
+  if (!result && !error) return null;
 
-  const success = result.is_dag && !result.errors;
+  const success = result?.is_dag && !error;
 
   return (
     <div
@@ -36,14 +36,13 @@ export const PipelineResultOverlay = ({ result, onClose }) => {
           borderRadius: 16,
           background:
             "linear-gradient(135deg, rgba(41,87,161,0.25), rgba(25,7,70,0.18))",
-            border: `1px solid ${
+          border: `1px solid ${
             success ? "rgba(34,197,94,0.6)" : "rgba(239,68,68,0.6)"
           }`,
           boxShadow: "0 30px 60px rgba(0,0,0,0.55)",
           color: "#e5e7eb",
           fontFamily: "Inter, sans-serif",
 
-          /* 🔥 Animation */
           transform: visible
             ? "translateY(0) scale(1)"
             : "translateY(-40px) scale(0.96)",
@@ -52,7 +51,6 @@ export const PipelineResultOverlay = ({ result, onClose }) => {
             "transform 400ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease",
         }}
       >
-        {/* Header */}
         <div
           style={{
             display: "flex",
@@ -65,18 +63,18 @@ export const PipelineResultOverlay = ({ result, onClose }) => {
               fontSize: 15,
               fontWeight: 600,
               color: success ? "#22c55e" : "#ef4444",
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
             }}
           >
-         <Network
-          style={{
-            width: "2rem",
-            height: "2rem", 
-            color: success ? "#22c55e" : "#ef4444",
-          }}
-           />
+            <Network
+              style={{
+                width: "2rem",
+                height: "2rem",
+                color: success ? "#22c55e" : "#ef4444",
+              }}
+            />
             {success ? "Pipeline Validated" : "Pipeline Error"}
           </div>
 
@@ -93,50 +91,40 @@ export const PipelineResultOverlay = ({ result, onClose }) => {
             <CircleX />
           </button>
         </div>
-
-        {/* Stats */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 10,
-            marginBottom: 12,
-          }}
-        >
-          <Stat label="Nodes" success={success} value={result.num_nodes} />
-          <Stat label="Edges" success={success} value={result.num_edges} />
-          <Stat label="DAG" success={success} value={result.is_dag ? "Yes" : "No"} />
-        </div>
-
-        {/* Message */}
-        {result.message && (
+        {success && (
           <div
             style={{
-              fontSize: 13,
-              opacity: 0.9,
-              lineHeight: 1.5,
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 10,
+              marginBottom: 12,
             }}
           >
-            {result.message}
+            <Stat label="Nodes" success={success} value={result?.num_nodes} />
+            <Stat label="Edges" success={success} value={result?.num_edges} />
+            <Stat
+              label="DAG"
+              success={success}
+              value={result?.is_dag ? <CircleCheckBig/> : <X/> }
+            />
           </div>
         )}
-
-        {/* Errors */}
-        {result.errors && (
+        {error && (
           <div
             style={{
               marginTop: 12,
               padding: 10,
-              borderRadius: 8,
               background: "rgba(239,68,68,0.1)",
-              border: "1px solid rgba(239,68,68,0.4)",
+              borderRadius: 8,
               fontSize: 12,
               color: "#fecaca",
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
             }}
           >
-            {Array.isArray(result.errors)
-              ? result.errors.map((e, i) => <div key={i}>• {e}</div>)
-              : result.errors}
+            <TriangleAlert/>
+            {error}
           </div>
         )}
       </div>
@@ -144,7 +132,7 @@ export const PipelineResultOverlay = ({ result, onClose }) => {
   );
 };
 
-const Stat = ({ label, value,success }) => (
+const Stat = ({ label, value, success }) => (
   <div
     style={{
       textAlign: "center",
@@ -154,18 +142,24 @@ const Stat = ({ label, value,success }) => (
       border: "1px solid rgba(148,163,184,0.25)",
     }}
   >
-    <div style={{
+    <div
+      style={{
         fontSize: 22,
         fontWeight: 600,
-        color:  success ? "#22c55e" : "#ef4444",
+        color: success ? "#22c55e" : "#ef4444",
         lineHeight: 1,
-    }}>{value}</div>
-    <div 
-    style={{
+      }}
+    >
+      {value}
+    </div>
+    <div
+      style={{
         marginTop: 6,
         fontSize: 11,
         color: "#e5eaf1ff",
       }}
-      >{label}</div>
+    >
+      {label}
+    </div>
   </div>
 );
