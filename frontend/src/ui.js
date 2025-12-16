@@ -16,7 +16,8 @@ import { TransformNode } from "./nodes/transformNode";
 import { FilterNode } from "./nodes/filterNode";
 import { ApiCallNode } from "./nodes/apiCallNode";
 import "reactflow/dist/style.css";
-
+import { CustomEdge } from "./edges/customEdges";
+import { EdgeDefs } from "./utils/svgDef";
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 export const nodeTypes = {
@@ -28,6 +29,10 @@ export const nodeTypes = {
   transform: TransformNode,
   filter: FilterNode,
   apiCall: ApiCallNode,
+};
+
+const edgeTypes = {
+  custom: CustomEdge,
 };
 
 const selector = (state) => ({
@@ -118,6 +123,7 @@ export const PipelineUI = () => {
           position: "relative",
         }}
       >
+     
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -128,6 +134,7 @@ export const PipelineUI = () => {
           onDragOver={onDragOver}
           onInit={setReactFlowInstance}
           nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
           proOptions={proOptions}
           snapGrid={[gridSize, gridSize]}
           connectionLineType="smoothstep"
@@ -138,27 +145,8 @@ export const PipelineUI = () => {
           style={{ background: "#020617" }}
           deleteKeyCode={["Backspace", "Delete"]}
         >
-          <svg style={{ position: "absolute", width: 0, height: 0 }}>
-            <defs>
-              <linearGradient
-                id="edge-gradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop
-                  offset="0%"
-                  stopColor="oklch(0.46 0.07 98)"
-                  stopOpacity="0.6"
-                />
-                <stop
-                  offset="100%"
-                  stopColor="oklch(0.82 0.03 96)"
-                  stopOpacity="0.8"
-                />
-              </linearGradient>
-            </defs>
+          <svg>
+            <EdgeDefs />
           </svg>
           <Background
             variant="dots"

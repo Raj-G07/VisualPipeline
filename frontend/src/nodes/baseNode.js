@@ -43,7 +43,9 @@ export const BaseNode = ({
           gap: 6,
         }}
       >
+        <div>
         {icon}
+        </div>
       <button
           onClick={() => deleteNode(id)}
           style={{
