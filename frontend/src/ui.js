@@ -136,6 +136,7 @@ export const PipelineUI = () => {
           defaultEdgeOptions={edgeOption}
           fitView
           style={{ background: "#020617" }}
+          deleteKeyCode={["Backspace", "Delete"]}
         >
           <svg style={{ position: "absolute", width: 0, height: 0 }}>
             <defs>
