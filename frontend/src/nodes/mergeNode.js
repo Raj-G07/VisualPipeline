@@ -9,6 +9,7 @@ export const MergeNode = ({ id , data }) => {
   );
   return (
     <BaseNode
+      id={id}
       headerColor="#e525ebff"
       borderColor="#570857ff"
       icon={<GitMerge/>}

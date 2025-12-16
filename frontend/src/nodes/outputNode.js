@@ -11,6 +11,7 @@ export const OutputNode = ({ id, data }) => {
 
   return (
     <BaseNode
+      id={id}
       headerColor="#7c3aed"
       borderColor="#9b37d4ff"
       icon={<FileOutput />}

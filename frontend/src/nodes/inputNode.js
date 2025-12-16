@@ -11,6 +11,7 @@ export const InputNode = ({ id, data }) => {
 
   return (
     <BaseNode
+      id={id}
       headerColor="#059669"
       borderColor="#19a38cff"
       icon={<FileInput />}

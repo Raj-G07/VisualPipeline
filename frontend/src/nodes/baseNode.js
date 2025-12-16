@@ -1,6 +1,8 @@
 import { useState } from "react";
-
+import { useStore } from "../store";
+import { CircleX } from 'lucide-react';
 export const BaseNode = ({
+  id,
   headerColor,
   borderColor,
   icon,
@@ -8,7 +10,7 @@ export const BaseNode = ({
   width = 240,
 }) => {
   const [hovered, setHovered] = useState(false);
-
+  const deleteNode = useStore((s) => s.deleteNode);
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -37,12 +39,24 @@ export const BaseNode = ({
           fontSize: 14,
           display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
           gap: 6,
         }}
       >
         {icon}
+      <button
+          onClick={() => deleteNode(id)}
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "#cdd4ddff",
+            cursor: "pointer",
+            fontSize: 12,
+          }}
+        >
+          <CircleX />
+        </button>
       </div>
-
       {/* Body */}
       <div style={{ padding: 12 }}>{children}</div>
     </div>

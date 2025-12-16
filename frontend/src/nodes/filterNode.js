@@ -10,6 +10,7 @@ export const FilterNode = ({ id, data }) => {
 
   return (
     <BaseNode
+      id={id}
       headerColor="#965205ff"
       borderColor="#5c3706ff"
       icon={<Funnel />}

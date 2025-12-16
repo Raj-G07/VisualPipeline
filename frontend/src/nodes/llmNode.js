@@ -5,6 +5,7 @@ import { BaseNode } from "./baseNode";
 export const LLMNode = ({ id }) => {
   return (
     <BaseNode
+      id={id}
       headerColor="#2563eb"
       borderColor="#305facff"
       icon={<Bot />}

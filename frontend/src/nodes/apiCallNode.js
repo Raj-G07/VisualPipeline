@@ -11,6 +11,7 @@ export const ApiCallNode = ({ id, data }) => {
 
   return (
     <BaseNode
+      id={id}
       headerColor="#05968aff"
       borderColor="#1970a3ff"
       icon={<Globe />}

@@ -5,6 +5,7 @@ import { BaseNode } from "./baseNode";
 export const TransformNode = ({ id }) => {
   return (
     <BaseNode
+      id={id}
       headerColor="#eb2556ff"
       borderColor="#ca2e3bff"
       icon={<Cog />}

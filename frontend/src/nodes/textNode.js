@@ -8,6 +8,7 @@ export const TextNode = ({ id, data }) => {
 
   return (
     <BaseNode
+      id={id}
       headerColor="#f59e0b"
       borderColor="#aab921ff"
       icon={<FileTypeCorner />}
