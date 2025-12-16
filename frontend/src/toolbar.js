@@ -3,7 +3,7 @@
 import { PipelineOverview } from "./components/pipelineOverview";
 import { DraggableNode } from "./components/draggableNode";
 import { Library,Activity } from 'lucide-react';
-import { FileTypeCorner, Bot ,FileOutput, FileInput } from "lucide-react";
+import { FileTypeCorner, Bot ,FileOutput, FileInput,GitMerge,Cog,Funnel,Globe } from "lucide-react";
 export const PipelineToolbar = () => {
   return (
     <div
@@ -73,16 +73,34 @@ export const PipelineToolbar = () => {
         Drag and drop to build pipeline
       </div>
       <div
+      className="pipeline-scroll"
+      style={{     
+       height: "calc(100vh - 310px)",
+       overflowY: "auto",
+       paddingRight: 6,
+       background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(25, 7, 70, 0.1))",
+       border: "1px solid rgba(148,163,184,0.25)",
+       borderRadius: 12,
+       boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.03)",    
+       }}
+       >
+      <div
         style={{
           display: "grid",
+          padding: 2,
           gap: 10,
         }}
-      >
+        >
+        <DraggableNode type="apiCall" label="API Call" Icon={Globe} description={"Make an external API call"} color="#05968aff" />
+        <DraggableNode type="filter" label="Filter" Icon={Funnel} description={"Filter data based on condition"} color="#965205ff" />
         <DraggableNode type="customInput" label="Input" Icon={FileInput} description={"Define an input variable"} color="#059669" />
         <DraggableNode type="llm" label="LLM" Icon={Bot} description={"Run an LLM"} color="#2563eb" />
-        <DraggableNode type="text" label="Text" Icon={FileTypeCorner} description={"Add text content"} color="#f59e0b" />
+        <DraggableNode type="merge" label="Merge" Icon={GitMerge} description={"Merge multiple inputs"} color="#e525eb" />  
         <DraggableNode type="customOutput" label="Output" Icon={FileOutput} description={"Define an output variable"} color="#7c3aed" />
-      </div>
+        <DraggableNode type="text" label="Text" Icon={FileTypeCorner} description={"Add text content"} color="#f59e0b" />
+        <DraggableNode type="transform" label="Transform" Icon={Cog} description={"Transform data using an LLM"} color="#eb2556" />
+        </div>
+        </div>
     </div>
   );
 };
