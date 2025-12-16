@@ -1,32 +1,59 @@
-// outputNode.js
+import { useState } from "react";
+import { Handle, Position } from "reactflow";
+import { FileOutput } from "lucide-react";
+import { BaseNode } from "./baseNode";
 
-import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
-import { FileOutput } from 'lucide-react';
 export const OutputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
-  const [outputType, setOutputType] = useState(data.outputType || 'Text');
-
-  const handleNameChange = (e) => {
-    setCurrName(e.target.value);
-  };
-
-  const handleTypeChange = (e) => {
-    setOutputType(e.target.value);
-  };
+  const [currName, setCurrName] = useState(
+    data?.outputName || id.replace("customOutput-", "output_")
+  );
+  const [outputType, setOutputType] = useState(data?.outputType || "Text");
 
   return (
-    <div 
-    style={{
-        width: 240,
-        background: "#30384bff",
-        borderRadius: 10,
-        border: "1px solid #9b37d4ff",
-        boxShadow: "0 10px 28px rgba(0,0,0,0.45)",
-        color: "#e5e7eb",
-        fontFamily: "Inter, sans-serif",
-      }}
-      >
+    <BaseNode
+      headerColor="#7c3aed"
+      borderColor="#9b37d4ff"
+      icon={<FileOutput />}
+    >
+      <div style={{ marginBottom: 10 }}>
+        <label style={{ fontSize: 11, opacity: 0.8 }}>Name</label>
+        <input
+          value={currName}
+          onChange={(e) => setCurrName(e.target.value)}
+          style={{
+              width: "90%",
+              marginTop: 4,
+              padding: "6px 8px",
+              borderRadius: 6,
+              background: "#020617",
+              border: "1px solid rgba(148, 163, 184, 0.5)",
+              color: "#e5e7eb",
+              fontSize: 12,
+            }}
+        />
+      </div>
+
+      <div>
+        <label style={{ fontSize: 11, opacity: 0.8 }}>Type</label>
+        <select
+          value={outputType}
+          onChange={(e) => setOutputType(e.target.value)}
+          style={{
+              width: "100%",
+              marginTop: 4,
+              padding: "6px 8px",
+              borderRadius: 6,
+              background: "#020617",
+              border: "1px solid rgba(148, 163, 184, 0.5)",
+              color: "#e5e7eb",
+              fontSize: 12,
+            }}
+        >
+          <option value="Text">Text</option>
+          <option value="Image">Image</option>
+        </select>
+      </div>
+
       <Handle
         type="target"
         position={Position.Left}
@@ -38,63 +65,6 @@ export const OutputNode = ({ id, data }) => {
           border: "2px solid #433855ff",
         }}
       />
-      <div 
-      style={{
-          background: "#7c3aed",
-          padding: "10px 12px",
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          fontWeight: 600,
-          fontSize: 14,
-        }}>
-       <FileOutput/>
-      </div>
-
-      
-      {/* Body */}
-      <div style={{ padding: 12 }}>
-        {/* Name */}
-        <div style={{ marginBottom: 10 }}>
-          <label style={{ fontSize: 11, opacity: 0.8 }}>Name</label>
-          <input
-            type="text"
-            value={currName}
-            onChange={(e) => setCurrName(e.target.value)}
-            style={{
-              width: "90%",
-              marginTop: 4,
-              padding: "6px 8px",
-              borderRadius: 6,
-              background: "#020617",
-              border: "1px solid rgba(148, 163, 184, 0.5)",
-              color: "#e5e7eb",
-              fontSize: 12,
-            }}
-          />
-        </div>
-
-        {/* Type */}
-        <div>
-          <label style={{ fontSize: 11, opacity: 0.8 }}>Type</label>
-          <select
-            value={outputType}
-            onChange={(e) => setOutputType(e.target.value)}
-            style={{
-              width: "100%",
-              marginTop: 4,
-              padding: "6px 8px",
-              borderRadius: 6,
-              background: "#020617",
-              border: "1px solid rgba(148, 163, 184, 0.5)",
-              color: "#e5e7eb",
-              fontSize: 12,
-            }}
-          >
-            <option value="Text">Text</option>
-            <option value="File">Image</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    </BaseNode>
   );
-}
+};
