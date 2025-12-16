@@ -15,6 +15,7 @@ export const PipelineOverview = () => {
       style={{
         background: "#020617",
         padding: "10px",
+        borderRadius: 10,
         width: 210,
         boxShadow: "0 10px 30px rgba(0,0,0,0.45)",
       }}
