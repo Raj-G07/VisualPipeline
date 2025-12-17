@@ -12,6 +12,7 @@ import {
   Cog,
   Funnel,
   Globe,
+  Merge
 } from "lucide-react";
 import { nodeTypes } from "./ui";
 export const PipelineToolbar = () => {
@@ -148,6 +149,13 @@ export const PipelineToolbar = () => {
             Icon={Globe}
             description={"Make an external API call"}
             color="#05968aff"
+          />
+          <DraggableNode
+            type="conditional"
+            label="Conditional"
+            Icon={Merge}
+            description={"Branch based on conditions"}
+            color="#eb2535"
           />
           <DraggableNode
             type="filter"
