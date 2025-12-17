@@ -1,5 +1,5 @@
 import { getBezierPath } from "reactflow";
-import { useStore } from "../components/store";
+import { useStore } from "../store";
 
 export const CustomEdge = ({
   id,
@@ -23,7 +23,6 @@ export const CustomEdge = ({
       <path
         id={id}
         d={edgePath}
-        stroke="#60a5fa"
         stroke="url(#edge-gradient)"
         markerEnd="url(#edge-arrow-chevron)"
         strokeWidth={selected ? 3 : 2}

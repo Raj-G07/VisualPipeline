@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useStore } from "../components/store";
+import { useStore } from "../store";
 import { CircleX } from "lucide-react";
 import "../index.css";
 export const BaseNode = ({ id, headerColor, icon, children, width = 240 }) => {

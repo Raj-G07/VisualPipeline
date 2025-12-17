@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useStore } from "./store";
+import { useStore } from "../store";
 import {Play,Loader} from "lucide-react";
 
 export const SubmitButton = ({setResult, setError }) => {
