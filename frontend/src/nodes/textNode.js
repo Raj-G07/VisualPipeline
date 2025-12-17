@@ -52,21 +52,23 @@ export const TextNode = ({ id, data }) => {
       />
       {variables.map((variable, index) => {
         const topPercent = ((index + 1) / (variables.length + 1)) * 100;
-        return (<Handle
-          key={variable}
-          type="source"
-          position={Position.Right}
-          id={`${id}-${variable}`}
-          style={{
-            top: `${topPercent}%`,
-            background: "#f59e0b",
-            width: 10,
-            height: 10,
-            border: "2px solid #92400e",
-            transform: "translateY(-50%)",
-          }}
-        />
-)})}
+        return (
+          <Handle
+            key={variable}
+            type="source"
+            position={Position.Right}
+            id={`${id}-${variable}`}
+            style={{
+              top: `${topPercent}%`,
+              background: "#f59e0b",
+              width: 10,
+              height: 10,
+              border: "2px solid #92400e",
+              transform: "translateY(-50%)",
+            }}
+          />
+        );
+      })}
     </BaseNode>
   );
 };

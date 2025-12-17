@@ -11,7 +11,8 @@ export const LLMNode = ({ id }) => {
     >
       <div style={{ marginBottom: 10 }}>
         <label style={{ fontSize: 11, opacity: 0.8 }}>Model</label>
-        <select style={{
+        <select 
+        style={{
               width: "100%",
               marginTop: 4,
               padding: "6px 8px",

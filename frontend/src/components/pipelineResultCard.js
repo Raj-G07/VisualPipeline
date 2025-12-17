@@ -85,7 +85,7 @@ export const PipelineResultOverlay = ({ result, onClose, error }) => {
             <CircleX />
           </button>
         </div>
-        {success && (
+        {result && (
           <div
             style={{
               display: "grid",
@@ -99,7 +99,7 @@ export const PipelineResultOverlay = ({ result, onClose, error }) => {
             <Stat
               label="DAG"
               success={success}
-              value={result?.is_dag ? <CircleCheckBig/> : <X/> }
+              value={success ? <CircleCheckBig/> : <X/> }
             />
           </div>
         )}
