@@ -70,3 +70,32 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.press-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 120ms ease-out,
+    box-shadow 120ms ease-out,
+    color 120ms ease-out;
+}
+
+.press-btn:hover {
+  color: #e9e7e7;
+}
+
+.press-btn:active {
+  transform: scale(0.92) translateY(1px);
+}
+
+.press-btn:focus-visible {
+  outline: none;
+}

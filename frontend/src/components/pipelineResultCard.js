@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CircleX, Network,TriangleAlert,CircleCheckBig,X } from "lucide-react";
-
+import "../index.css";
 export const PipelineResultOverlay = ({ result, onClose, error }) => {
   const [visible, setVisible] = useState(false);
 
@@ -80,13 +80,7 @@ export const PipelineResultOverlay = ({ result, onClose, error }) => {
 
           <button
             onClick={onClose}
-            style={{
-              background: "transparent",
-              border: "none",
-              color: "#94a3b8",
-              cursor: "pointer",
-              fontSize: 16,
-            }}
+            className="press-btn"
           >
             <CircleX />
           </button>

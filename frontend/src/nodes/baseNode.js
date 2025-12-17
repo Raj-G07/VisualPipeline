@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStore } from "../components/store";
 import { CircleX } from "lucide-react";
-
+import "../index.css";
 export const BaseNode = ({ id, headerColor, icon, children, width = 240 }) => {
   const [hovered, setHovered] = useState(false);
   const deleteNode = useStore((s) => s.deleteNode);
@@ -51,13 +51,7 @@ export const BaseNode = ({ id, headerColor, icon, children, width = 240 }) => {
 
           <button
             onClick={() => deleteNode(id)}
-            style={{
-              background: "transparent",
-              border: "none",
-              color: "#cdd4ddff",
-              cursor: "pointer",
-              fontSize: 12,
-            }}
+            className="press-btn"
           >
             <CircleX />
           </button>
