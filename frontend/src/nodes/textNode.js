@@ -10,7 +10,6 @@ export const TextNode = ({ id, data }) => {
     <BaseNode
       id={id}
       headerColor="#f59e0b"
-      borderColor="#aab921ff"
       icon={<FileTypeCorner />}
     >
       <label style={{ fontSize: 11, opacity: 0.8, marginBottom: 4 }}>
