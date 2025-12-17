@@ -13,7 +13,6 @@ export const OutputNode = ({ id, data }) => {
     <BaseNode
       id={id}
       headerColor="#7c3aed"
-      borderColor="#9b37d4ff"
       icon={<FileOutput />}
     >
       <div style={{ marginBottom: 10 }}>

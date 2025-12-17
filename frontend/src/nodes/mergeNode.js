@@ -11,7 +11,6 @@ export const MergeNode = ({ id , data }) => {
     <BaseNode
       id={id}
       headerColor="#e525ebff"
-      borderColor="#570857ff"
       icon={<GitMerge/>}
     >
       <div style={{ marginBottom: 10 }}>

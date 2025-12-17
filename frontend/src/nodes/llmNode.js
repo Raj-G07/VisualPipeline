@@ -7,7 +7,6 @@ export const LLMNode = ({ id }) => {
     <BaseNode
       id={id}
       headerColor="#2563eb"
-      borderColor="#305facff"
       icon={<Bot />}
     >
       <div style={{ marginBottom: 10 }}>

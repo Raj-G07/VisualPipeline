@@ -7,7 +7,6 @@ export const TransformNode = ({ id }) => {
     <BaseNode
       id={id}
       headerColor="#eb2556ff"
-      borderColor="#ca2e3bff"
       icon={<Cog />}
     >
       <div style={{ marginBottom: 10 }}>

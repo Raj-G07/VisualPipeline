@@ -12,7 +12,6 @@ export const FilterNode = ({ id, data }) => {
     <BaseNode
       id={id}
       headerColor="#965205ff"
-      borderColor="#5c3706ff"
       icon={<Funnel />}
     >
       <div style={{ marginBottom: 10 }}>
