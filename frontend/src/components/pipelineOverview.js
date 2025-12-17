@@ -1,4 +1,4 @@
-import { useStore } from "../store";
+import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 
 export const PipelineOverview = () => {
@@ -20,7 +20,6 @@ export const PipelineOverview = () => {
         boxShadow: "0 10px 30px rgba(0,0,0,0.45)",
       }}
     >
-     
       {/* Stats */}
       <div
         style={{
@@ -39,7 +38,8 @@ export const PipelineOverview = () => {
 const StatCard = ({ label, value }) => (
   <div
     style={{
-      background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
+      background:
+        "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(32, 10, 83, 0.1))",
       border: "1px solid #1e293b",
       borderRadius: 10,
       padding: "12px 10px",

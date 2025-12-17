@@ -1,7 +1,6 @@
-import { PipelineToolbar } from "./toolbar";
-import { PipelineUI } from "./ui";
-import { SubmitButton } from "./submit";
-import { Network } from "lucide-react";
+import { PipelineToolbar } from "./components/toolbar";
+import { PipelineUI } from "./components/ui";
+import { SubmitButton } from "./components/submit";
 import { useState } from "react";
 import { PipelineResultOverlay } from "./components/pipelineResultCard";
 import { FlippingNetworkIcon } from "./components/flippingNetworkIcon";
@@ -48,7 +47,7 @@ function App() {
               margin: "0 auto",
             }}
           >
-            <FlippingNetworkIcon/>
+            <FlippingNetworkIcon />
           </div>
           <div
             style={{

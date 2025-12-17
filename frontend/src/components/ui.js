@@ -6,18 +6,18 @@ import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap } from "reactflow";
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
-import { InputNode } from "./nodes/inputNode";
-import { LLMNode } from "./nodes/llmNode";
-import { OutputNode } from "./nodes/outputNode";
-import { TextNode } from "./nodes/textNode";
+import { InputNode } from "../nodes/inputNode";
+import { LLMNode } from "../nodes/llmNode";
+import { OutputNode } from "../nodes/outputNode";
+import { TextNode } from "../nodes/textNode";
 import { Network } from "lucide-react";
-import { MergeNode } from "./nodes/mergeNode";
-import { TransformNode } from "./nodes/transformNode";
-import { FilterNode } from "./nodes/filterNode";
-import { ApiCallNode } from "./nodes/apiCallNode";
+import { MergeNode } from "../nodes/mergeNode";
+import { TransformNode } from "../nodes/transformNode";
+import { FilterNode } from "../nodes/filterNode";
+import { ApiCallNode } from "../nodes/apiCallNode";
 import "reactflow/dist/style.css";
-import { CustomEdge } from "./edges/customEdges";
-import { EdgeDefs } from "./utils/svgDef";
+import { CustomEdge } from "../edges/customEdges";
+import { EdgeDefs } from "../utils/svgDef";
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 export const nodeTypes = {
@@ -82,7 +82,6 @@ export const PipelineUI = () => {
         );
         const type = appData?.nodeType;
 
-
         if (typeof type === "undefined" || !type) {
           return;
         }
@@ -123,7 +122,6 @@ export const PipelineUI = () => {
           position: "relative",
         }}
       >
-     
         <ReactFlow
           nodes={nodes}
           edges={edges}

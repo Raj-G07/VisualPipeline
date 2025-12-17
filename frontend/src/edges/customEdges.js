@@ -1,5 +1,5 @@
 import { getBezierPath } from "reactflow";
-import { useStore } from "../store";
+import { useStore } from "../components/store";
 
 export const CustomEdge = ({
   id,
@@ -10,7 +10,7 @@ export const CustomEdge = ({
   selected,
 }) => {
   const deleteEdges = useStore((s) => s.deleteEdges);
-  
+
   const [edgePath] = getBezierPath({
     sourceX,
     sourceY,
@@ -30,8 +30,8 @@ export const CustomEdge = ({
         opacity={selected ? 1 : 0.85}
         fill="none"
         style={{
-        transition: "stroke-width 150ms ease, opacity 150ms ease",
-      }}
+          transition: "stroke-width 150ms ease, opacity 150ms ease",
+        }}
       />
       <foreignObject
         width={20}
