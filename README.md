@@ -56,7 +56,7 @@ code .
 ```bash
 cd backend
 pip install fastapi uvicorn python-multipart
-uvicorn main:app --reload
+python -m uvicorn main:app --reload
 ```
 Backend will run at: `http://127.0.0.1:8000`
 - Frontend Setup
