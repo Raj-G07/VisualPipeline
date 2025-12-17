@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useStore } from "./store";
-import {Play} from "lucide-react";
+import {Play,Loader} from "lucide-react";
 
-export const SubmitButton = ({setResult, setError , error}) => {
+export const SubmitButton = ({setResult, setError }) => {
   const { nodes, edges } = useStore((s) => ({
     nodes: s.nodes,
     edges: s.edges,
@@ -11,7 +11,6 @@ export const SubmitButton = ({setResult, setError , error}) => {
   const [loading, setLoading] = useState(false);
 
   const isDisabled =
-    loading ||
     nodes.length === 0 ||
     (nodes.length > 1 && edges.length === 0);
 
@@ -87,22 +86,18 @@ export const SubmitButton = ({setResult, setError , error}) => {
             e.currentTarget.style.transform = "scale(1)";
           }}
         >
-      <Play style={{ width: "1rem", height: "1rem", margin: "0 8px 0 0" }} />
-        {loading ? "" : "Run"}
+          {loading ? 
+        <Loader style={{
+        width: "2.7rem",
+        height: "1rem",
+        animation: "spin 1s linear infinite",
+         }} /> 
+         : 
+         <>
+         <Play style={{ width: "1rem", height: "1rem", margin: "0 8px 0 0" }} /> 
+         Run
+         </>}
       </button>
-
-      {error && (
-        <div
-        style={{
-          marginLeft: 12,
-            fontSize: 12,
-            color: "#ef4444",
-            alignSelf: "center",
-          }}
-        >
-          {error}
-        </div>
-      )}
     </div>
   </>
   );
