@@ -4,6 +4,7 @@ import { SubmitButton } from "./submit";
 import { Network } from "lucide-react";
 import { useState } from "react";
 import { PipelineResultOverlay } from "./components/pipelineResultCard";
+import { FlippingNetworkIcon } from "./components/flippingNetworkIcon";
 function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -47,13 +48,7 @@ function App() {
               margin: "0 auto",
             }}
           >
-            <Network
-              style={{
-                width: "2rem",
-                height: "2rem",
-                color: "rgb(59,130,246)",
-              }}
-            />
+            <FlippingNetworkIcon/>
           </div>
           <div
             style={{
