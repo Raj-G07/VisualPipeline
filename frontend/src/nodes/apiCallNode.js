@@ -4,7 +4,7 @@ import { Globe } from 'lucide-react';
 import { BaseNode } from "./baseNode";
 export const ApiCallNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("apiCall-", "apiCall_")
+    data?.inputName || ""
   );
   const [inputType, setInputType] = useState(data?.inputType || "Get");
 
@@ -20,6 +20,7 @@ export const ApiCallNode = ({ id, data }) => {
           type="text"
           value={currName}
           onChange={(e) => setCurrName(e.target.value)}
+          placeholder="https://api.example.com/endpoint"
           style={{
               width: "90%",
               marginTop: 3,

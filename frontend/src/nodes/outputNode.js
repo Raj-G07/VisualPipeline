@@ -5,7 +5,7 @@ import { BaseNode } from "./baseNode";
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
-    data?.outputName || id.replace("customOutput-", "output_")
+    data?.outputName || ""
   );
   const [outputType, setOutputType] = useState(data?.outputType || "Text");
 
@@ -20,6 +20,7 @@ export const OutputNode = ({ id, data }) => {
         <input
           value={currName}
           onChange={(e) => setCurrName(e.target.value)}
+          placeholder="output_name"
           style={{
               width: "90%",
               marginTop: 4,

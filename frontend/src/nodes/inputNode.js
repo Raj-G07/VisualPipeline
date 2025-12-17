@@ -5,9 +5,9 @@ import { BaseNode } from "./baseNode";
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("customInput-", "input_")
+    data?.inputName || ""
   );
-  const [inputType, setInputType] = useState(data?.inputType || "Number");
+  const [inputType, setInputType] = useState(data?.inputType || "Text");
 
   return (
     <BaseNode
@@ -20,6 +20,7 @@ export const InputNode = ({ id, data }) => {
         <input
           value={currName}
           onChange={(e) => setCurrName(e.target.value)}
+          placeholder="input_name"
           style={{
               width: "90%",
               marginTop: 3,

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const MergeNode = ({ id , data }) => {
     const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("merge-", "merge_")
+    data?.inputName || ""
   );
   return (
     <BaseNode
@@ -18,6 +18,7 @@ export const MergeNode = ({ id , data }) => {
         <input
           value={currName}
           onChange={(e) => setCurrName(e.target.value)}
+          placeholder="Enter separator"
           style={{
               width: "90%",
               marginTop: 3,

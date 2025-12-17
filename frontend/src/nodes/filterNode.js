@@ -5,7 +5,7 @@ import { BaseNode } from "./baseNode";
 
 export const FilterNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("filter-", "filter_")
+    data?.inputName || ""
   );
 
   return (
@@ -19,6 +19,7 @@ export const FilterNode = ({ id, data }) => {
         <input
           value={currName}
           onChange={(e) => setCurrName(e.target.value)}
+          placeholder="Example: {{score}} > 0.8"
           style={{
               width: "90%",
               marginTop: 3,
