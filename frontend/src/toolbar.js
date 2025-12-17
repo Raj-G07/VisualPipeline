@@ -70,9 +70,15 @@ export const PipelineToolbar = () => {
           borderRadius: 6,
           padding: "2px 6px",
           fontSize: 12,
+          fontWeight: 500,
           marginLeft: 6,
           background: "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(25, 7, 70, 0.1))",
-        }}>{length} types</div>
+        }}>{length} <span 
+        style={{
+          fontSize: 11
+        }}>
+          types
+          </span></div>
         </div>
       </div>
 
