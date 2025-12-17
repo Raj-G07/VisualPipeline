@@ -102,10 +102,11 @@ export const PipelineToolbar = () => {
                 "linear-gradient(135deg, rgba(41, 87, 161, 0.2), rgba(25, 7, 70, 0.1))",
             }}
           >
-            {length}{" "}
+            {length}
             <span
               style={{
                 fontSize: 11,
+                padding: 3,
               }}
             >
               types
