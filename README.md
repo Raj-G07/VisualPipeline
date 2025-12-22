@@ -46,6 +46,9 @@ Users can construct data pipelines by dragging nodes onto a canvas, connecting t
 - FastAPI
 - Uvicorn
 
+## ScreenShot
+- <img width="1240" height="720" alt="Screenshot 2025-12-22 175423" src="https://github.com/user-attachments/assets/121d63a1-57e9-4a25-8df0-fd6f3c13365f" />
+
 ## 🚀 Getting Started
 - Clone the Repository
 ```bash
